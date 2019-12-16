@@ -29,11 +29,12 @@ public interface ResourceDao {
      * 根据id删除对应的行
      * @param id
      */
-    void deleteById(int id);
+    int deleteById(int id);
     /**
      * 修改数据
      */
     void modify(int id);
 
     PageInfo queryByAll(Integer currentPage);
+    int updateByRe(Resource resource);
 }

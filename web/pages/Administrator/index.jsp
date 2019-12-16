@@ -91,7 +91,7 @@
                 </ul>
                 <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu">资源管理</div>
                 <ul id="accounts-menu" class="nav nav-list collapse in">
-                    <li ><a href="SysuserListSerclet">资源列表</a></li>
+                    <li ><a href="${pageContext.request.contextPath}/ResourceListServlet">资源列表</a></li>
 
                 </ul>
 

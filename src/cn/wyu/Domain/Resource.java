@@ -2,12 +2,24 @@ package cn.wyu.Domain;
 
 //资源信息表
 public class Resource {
+    private int resourceId;
     private String uploaderName;
     private String name;
     private String descn;
     private String type;
     private String fileName;
     private String saveFileName;
+
+
+    public Resource(int resourceId, String uploaderName, String name, String descn, String type, String fileName, String saveFileName) {
+        this.resourceId = resourceId;
+        this.uploaderName = uploaderName;
+        this.name = name;
+        this.descn = descn;
+        this.type = type;
+        this.fileName = fileName;
+        this.saveFileName = saveFileName;
+    }
 
     public Resource(String uploaderName, String name, String descn, String type, String fileName, String saveFileName) {
         this.uploaderName = uploaderName;
@@ -16,6 +28,14 @@ public class Resource {
         this.type = type;
         this.fileName = fileName;
         this.saveFileName = saveFileName;
+    }
+
+    public int getResourceId() {
+        return resourceId;
+    }
+
+    public void setResourceId(int resourceId) {
+        this.resourceId = resourceId;
     }
 
     public String getUploaderName() {

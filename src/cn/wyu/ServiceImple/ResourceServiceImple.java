@@ -30,4 +30,28 @@ public class ResourceServiceImple implements ResourceService {
             return false;
         }
     }
+
+    @Override
+    public boolean isDelete(int resourceId) {
+        ResourceDao resourceDao = new ResourceImple();
+        int count = resourceDao.deleteById(resourceId);
+        if(count>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    @Override
+    public boolean isUpdate(Resource resource) {
+        ResourceDao resourceDao = new ResourceImple();
+        int count = resourceDao.updateByRe(resource);
+        if(count>0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 }

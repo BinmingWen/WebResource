@@ -10,4 +10,6 @@ public interface ResourceService {
      */
     boolean isInsert(Resource resource);
     boolean isPageinfo(Integer currentPage);
+    boolean isDelete(int resourceId);
+    boolean isUpdate(Resource resource);
 }
