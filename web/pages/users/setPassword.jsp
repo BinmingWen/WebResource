@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: wenmingbin
-  Date: 2019/12/11
-  Time: 19:28
+  Date: 2019/12/16
+  Time: 21:42
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -10,14 +10,14 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>修改个人资料</title>
-    <link rel="stylesheet" href="../../css/index.css" />
-    <link rel="stylesheet" href="../../css/index-middle.css" />
+    <title>修改密码</title>
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/index-middle.css" />
     <style>
         .message {
             width: 100%;
             height: 800px;
-            background-image: url(../../img/bg-2.jpg);
+            background-image: url(img/bg-2.jpg);
         }
 
         .message-center {
@@ -38,13 +38,15 @@
 <body>
 <div class="message">
     <div class="message-center">
-        <h2>请输入下列信息</h2>
-        <form action="${pageContext.request.contextPath}/UpdateServlet" method="post">
-            学号：<input type="text" name="userNo"><br>
-            姓名：<input type="text" name="userName"><br>
-            班级：<input type="text" name="className"><br>
-            <input type="hidden" name="userId" value="${user.userId}">
-            <input type="submit" value="提交">
+        <h2>请输入新密码</h2>
+        <form method="post" action="${pageContext.request.contextPath}/UpdatePwsServlet">
+            <ul>
+                <li>新密码:<input id="" maxlength="30" name="newkey"/></li>
+                <input type="hidden" name="userId" value="${user.userId}">
+            </ul>
+            <div class="submit-btn">
+                <input type="submit" value="提交" style="height: 30px;width: 70px;"/>
+            </div>
         </form>
     </div>
 </div>

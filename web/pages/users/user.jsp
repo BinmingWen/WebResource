@@ -43,9 +43,9 @@
             <div>
                 <form>
                     <ul>
-                        <li class="user-list">用户名:</li>
-                        <li class="user-list">密码:</li>
-                        <li class="user-list-rewrite"><button onclick="myFunction()">修改密码</button></li>
+                        <li class="user-list">用户名: ${user.userName}</li>
+                        <li class="user-list">密码:${user.password}</li>
+                        <li class="user-list-rewrite"><button><a href="${pageContext.request.contextPath}/JumpSetPasswordServlet">修改密码</a></button>
                     </ul>
                 </form>
             </div>
@@ -53,10 +53,9 @@
         <div id="content_2" class="none">
             <form >
                 <ul>
-                    <li class="user-list">姓名:</li>
-                    <li class="user-list">性别:</li>
-                    <li class="user-list">年龄:</li>
-                    <li class="user-list">所在地:</li>
+                    <li class="user-list">姓名：${user.userName}</li>
+                    <li class="user-list">学号：${user.userNo}</li>
+                    <li class="user-list">班级：${user.className}</li>
                 </ul>
                 <div class="rewrite-btn"><a href="${pageContext.request.contextPath}/JumpUpdateServlet">修改个人资料</a></div>
             </form>

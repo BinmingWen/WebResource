@@ -234,6 +234,44 @@ public class UsersImple implements UsersDao {
         return count;
     }
 
+    @Override
+    public boolean updateUser(String no,String name,String classname,int id) {
+        sql = "update users set userNo=?,userName=?,className=? where userId=?";
+        int count = jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setString(1,no);
+                preparedStatement.setString(2,name);
+                preparedStatement.setString(3,classname);
+                preparedStatement.setInt(4,id);
+                return preparedStatement;
+            }
+        });
+        if(count==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    @Override
+    public int updateUserByUser(int id, String password) {
+
+        List<Users> list = new ArrayList();
+        sql = "update users set password=? where userId = ?;";
+        int count = jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement preStatement = conn.prepareStatement(sql);
+                preStatement.setString(1, password);
+                preStatement.setInt(2, id);
+                return preStatement;
+            }
+        });
+        return count;
+    }
+
    /* @Override
     public int updateUser(int id,int isStu, String userName, String userNo, String password, String className) {
 

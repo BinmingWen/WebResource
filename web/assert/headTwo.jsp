@@ -13,7 +13,7 @@
         <li ><a href="/pages/login/success.jsp">首页</a></li>
         <li ><a href="${pageContext.request.contextPath}/JumpUploadServlet">上传资源</a></li>
         <li ><a href="${pageContext.request.contextPath}/DownloadResourceServlet">资源库</a></li>
-        <li ><a href="">留言</a></li>
+        <li ><a href="${pageContext.request.contextPath}/PostListServlet">留言</a></li>
         <li ><a href="${pageContext.request.contextPath}/ShareServlet">分享</a></li>
         <li ><a href="">联系站长</a></li>
     </ul>

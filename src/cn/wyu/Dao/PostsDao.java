@@ -1,6 +1,7 @@
 package cn.wyu.Dao;
 
 import cn.wyu.Domain.Posts;
+import cn.wyu.bean.PageInfo;
 
 import java.util.List;
 
@@ -9,7 +10,7 @@ public interface PostsDao {
      * 插入操作
      * @param Posts
      */
-    void insert(Posts posts);
+    int insert(Posts posts);
 
     /**
      * 根据id查询数据
@@ -33,4 +34,5 @@ public interface PostsDao {
      * 修改数据
      */
     void modify(int id);
+    PageInfo queryByCurPage(int currentPage);
 }

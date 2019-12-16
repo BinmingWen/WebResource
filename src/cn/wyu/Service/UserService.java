@@ -32,4 +32,8 @@ public interface UserService {
      */
     boolean userDelete(int id);
     boolean userEdit(Users user);
+    boolean userUpdate(String no,String name,String classname,int id);
+
+    boolean updatePassword(Users user);
+    // boolean updateByPas
 }

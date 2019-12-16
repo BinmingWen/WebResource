@@ -20,4 +20,7 @@ public interface UsersDao {
     int deleteById(int id);
     Users queryById(int id);
     int updateUser(int userId,int isStu,String userName,String userNo,String password,String className);
+    boolean updateUser(String userName,String userNo,String classNamem,int id);
+
+    int updateUserByUser(int id, String password);
 }

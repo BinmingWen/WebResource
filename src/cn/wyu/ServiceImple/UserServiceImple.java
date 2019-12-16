@@ -70,4 +70,23 @@ public class UserServiceImple implements UserService {
         }
 
     }
+
+    @Override
+    public boolean userUpdate(String no, String name, String classname,int id) {
+        UsersDao usersDao = new UsersImple();
+
+        return ((UsersImple) usersDao).updateUser(no,name,classname,id);
+    }
+
+    @Override
+    public boolean updatePassword(Users user) {
+        UsersDao usersDao = new UsersImple();
+        int count = usersDao.updateUserByUser(user.getUserId(),user.getPassword());
+        if(count>0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
