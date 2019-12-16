@@ -142,7 +142,7 @@
                         </c:if>
                         <td>
                             <!--商品信息更改和删除开始-->
-                            <a href=""><button style="height: 24px; width: 46px;font-size: 7px">修改</button></a>
+                            <a href="${pageContext.request.contextPath}/JumpUserEditServlet?id=${user.userId}"><button style="height: 24px; width: 46px;font-size: 7px">修改</button></a>
                             <a href="${pageContext.request.contextPath}/UserDeleteServlet?userId=${user.userId}" ><button style="height: 24px; width: 46px;font-size: 7px">删除</button></a>
                             <!--商品信息更改和删除结束-->
                         </td>
@@ -169,10 +169,10 @@
                             <a href="${pageContext.request.contextPath}/UsersListServlet?currentPage=${status.index}">${status.index}</a>
                         </c:if>
                     </c:forEach>
-                    <c:if test="${pageInfo.currentPage+1 lt pageInfo.totalPages}">
+                    <c:if test="${pageInfo.currentPage lt pageInfo.totalPages}">
                         <a href="${pageContext.request.contextPath}/UsersListServlet?currentPage=${pageInfo.currentPage+1}">下一页</a>
                     </c:if>
-                    <c:if test="${pageInfo.currentPage+1 ge pageInfo.totalPages}">
+                    <c:if test="${pageInfo.currentPage ge pageInfo.totalPages}">
                         <span>下一页</span>
                     </c:if>
                     <span>当前页：${pageInfo.currentPage}</span>

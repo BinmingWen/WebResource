@@ -216,7 +216,7 @@ public class UsersImple implements UsersDao {
     }
 
     @Override
-    public int updateUser(int id, int userId, int isStu, String userName, String userNo, String password, String className) {
+    public int updateUser(int userId, int isStu, String userName, String userNo, String password, String className) {
         sql = "update users set isStu=?,userName=?,userNo=?,password=?,className=? where userId=?";
         int count = jdbcTemplate.update(new PreparedStatementCreator() {
             @Override
@@ -227,7 +227,7 @@ public class UsersImple implements UsersDao {
                 preparedStatement.setString(3,userNo);
                 preparedStatement.setString(4,password);
                 preparedStatement.setString(5,className);
-                preparedStatement.setInt(6,id);
+                preparedStatement.setInt(6,userId);
                 return preparedStatement;
             }
         });

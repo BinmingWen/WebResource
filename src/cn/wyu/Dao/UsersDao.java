@@ -19,5 +19,5 @@ public interface UsersDao {
 
     int deleteById(int id);
     Users queryById(int id);
-    int updateUser(int id,int userId,int isStu,String userName,String userNo,String password,String className);
+    int updateUser(int userId,int isStu,String userName,String userNo,String password,String className);
 }

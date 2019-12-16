@@ -134,20 +134,20 @@
                 </div>
             </div>
             <div class="well">
-                <form action="${basepath }/SupplierUpdate" method="post">
+                <form action="${pageContext.request.contextPath}/UserEditServlet" method="post">
                     用户ID: </br>
-                    &nbsp<input type="text" disabled name="no" id="supplier" value="${supplier.no }"><br>
+                    &nbsp<input type="text" disabled name="no" id="supplier" value="${user.userId }"><br>
                     学号/教师编号: </br>
-                    &nbsp<input type="text" name="name" id="supplier" value="${supplier.name }"><br>
+                    &nbsp<input type="text" name="userNo" id="supplier" value="${user.userNo }"><br>
                     姓名: <br>
-                    &nbsp<input type="text" name="phone" id="supplier" value="${supplier.phone }"><br>
+                    &nbsp<input type="text" name="userName" id="supplier" value="${user.userName }"><br>
                     密码: <br>
-                    &nbsp<input type="text" name="phone" id="supplier" value="${supplier.phone }"><br>
+                    &nbsp<input type="text" name="password" id="supplier" value="${user.password }"><br>
                     班级: <br>
-                    &nbsp<input type="text" name="phone" id="supplier" value="${supplier.phone }"><br>
+                    &nbsp<input type="text" name="className" id="supplier" value="${user.className }"><br>
                     学生/老师: <br>
-                    &nbsp<input type="text" name="address" id="supplier" value="${supplier.address }">
-                    &nbsp<input type="hidden" name="id" id="supplier" value="${supplier.no }"><br>
+                    &nbsp<input type="text" name="isStu" id="supplier" value="${isStu }">
+                    &nbsp<input type="hidden" name="userId" id="supplier" value="${user.userId }"><br>
                     &nbsp<input type="submit" value="提交" id="sub"><br>
                 </form>
             </div>
