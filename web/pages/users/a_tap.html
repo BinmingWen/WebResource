@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>用户界面</title>
+		<link rel="stylesheet" href="css/a_tap.css" />
+		<link rel="stylesheet" href="css/index.css" />
+		<link rel="stylesheet" href="css/index-middle.css" />
+		<script>
+			function hover(n,count){
+				var $ = function(o) {
+					return document.getElementById(o);
+				}
+				for(var i = 1;i<=count;i++) {
+					$('tap_'+i).className = 'normal';
+					$('content_'+i).className = 'none';
+				}
+				$('content_'+n).className = 'show';
+				$('tap_'+n).className = 'hover';
+			}
+		</script>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<nav class="navbar navbar-default nav-bar-width nav-bar-height">
+			<div class="navbar-header"></div>
+			<div class="access-statistics"></div>
+				<ul id="menu">
+					<li ><a href="www.baidu.com">首页</a></li>
+					<li ><a href="www.baidu.com">文章</a></li>
+					<li ><a href="www.baidu.com">代码库</a></li>
+					<li ><a href="www.baidu.com">留言</a></li>
+					<li ><a href="www.baidu.com">分享</a></li>
+					<li ><a href="www.baidu.com">联系站长</a></li>
+				</ul>
+				<div class="navbar-header"></div>
+		</nav>
+		<div class="tap_wrap">
+			<ul class="tap">
+				<li id="tap_1" class="hover" onclick="hover(1,2)">账户</li>
+				<li id="tap_2" class="normal" onclick="hover(2,2)">资料</li>
+			</ul>
+			<div class="content">
+				<div id="content_1" class="show">
+					<div>
+						<form>
+							<ul>
+								<li class="user-list">用户名:</li>
+								<li class="user-list">密码:</li>
+								<li class="user-list-rewrite"><button onclick="myFunction()">修改密码</button></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+				<div id="content_2" class="none">
+					<form>
+						<ul>
+							<li class="user-list">姓名:</li>
+							<li class="user-list">性别:</li>
+							<li class="user-list">年龄:</li>
+							<li class="user-list">所在地:</li>
+						</ul>
+						<div class="rewrite-btn"><a href="">修改个人资料</a></div>
+					</form>
+				</div>
+			</div>
+		</div>
+<script>
+function myFunction() {
+  var person = prompt("请输入密码：");
+  if (person == null || person == "") {
+    alert("密码为空")
+  } else {
+    alert("密码已修改")
+  }
+}
+</script>
+	</body>
+</html>

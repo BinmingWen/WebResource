@@ -1,0 +1,74 @@
+.tap_wrap {
+	width: 906px;
+	padding: 0;
+	margin: 0;
+	position: absolute;
+	left: 290px;
+	top: 70px;
+}
+
+ul.tap {
+	height: 24px;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+ul.tap li {
+	float: left;
+	height: 24px;
+	padding: 0 1em;
+	cursor: pointer;
+	font: 14px/24px "宋体" arial,helvetica,sans-serif;
+}
+
+.normal {
+	color: #f3a87;
+	background: #fff;
+	border: 1px solid #e6f2ff;
+	border-bottom: 0;
+}
+
+.hover {
+	color: #f3a87;
+	font-weight: bold;
+	background: #e6f2ff;
+	border: 1px solid #E6F2FF;
+	border-bottom: 0;
+}
+
+.show {
+	display: block;
+}
+
+.none {
+	display: none;
+}
+
+.content {
+	height: auto;
+	padding: 6px;
+	clear: both;
+	background-image: url(../img/bg-3.jpg);
+	text-align: left;
+	height: 600px;
+}
+
+.user-list {
+	list-style: none;
+	font-size: 160%;
+	margin-top: 50px;
+}
+
+.user-list-rewrite {
+	list-style: none;
+	font-size: 160%;
+	margin-top: 50px;
+	margin-left: 500px;
+	text-decoration: none;
+}
+
+.rewrite-btn {
+	position: absolute;
+	left: 500px;
+}
