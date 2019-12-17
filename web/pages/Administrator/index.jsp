@@ -57,9 +57,7 @@
             <ul class="nav pull-right">
 
                 <li id="fat-menu" class="dropdown">
-                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                        管理员
-                    </a>
+                    <a href="/pages/login/login.jsp">退出</a>
 
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="#">Settings</a></li>
@@ -85,7 +83,6 @@
             <div class="sidebar-nav">
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu">用户管理</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
-                    <li ><a href="index.jsp">主页</a></li>
                     <li ><a href="${pageContext.request.contextPath}/UsersListServlet">用户列表</a></li>
 
                 </ul>
@@ -97,7 +94,7 @@
 
                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu">帖子管理</div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li ><a href="#">帖子列表</a></li>
+                    <li ><a href="${pageContext.request.contextPath}/PostsServlet">帖子列表</a></li>
 
                 </ul>
 

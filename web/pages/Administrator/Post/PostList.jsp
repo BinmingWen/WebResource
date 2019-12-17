@@ -26,34 +26,19 @@
 
     <style type="text/css">
         #line-chart {
-            height: 300px;
-            width: 800px;
+            height:300px;
+            width:800px;
             margin: 0px auto;
             margin-top: 1em;
         }
-
-        .brand {
-            font-family: georgia, serif;
-        }
-
+        .brand { font-family: georgia, serif; }
         .brand .first {
             color: #ccc;
             font-style: italic;
         }
-
         .brand .second {
             color: #fff;
             font-weight: bold;
-        }
-
-        #supplier {
-            height: 30px;
-            width: 600px;
-        }
-
-        #sub {
-            height: 30px;
-            width: 200px;
         }
     </style>
 
@@ -65,14 +50,10 @@
     <!-- Le fav and touch icons -->
 </head>
 
-<!--[if lt IE 7 ]>
-<body class="ie ie6"> <![endif]-->
-<!--[if IE 7 ]>
-<body class="ie ie7"> <![endif]-->
-<!--[if IE 8 ]>
-<body class="ie ie8"> <![endif]-->
-<!--[if IE 9 ]>
-<body class="ie ie9"> <![endif]-->
+<!--[if lt IE 7 ]> <body class="ie ie6"> <![endif]-->
+<!--[if IE 7 ]> <body class="ie ie7"> <![endif]-->
+<!--[if IE 8 ]> <body class="ie ie8"> <![endif]-->
+<!--[if IE 9 ]> <body class="ie ie9"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <body>
 <!--<![endif]-->
@@ -83,7 +64,6 @@
 
                 <li id="fat-menu" class="dropdown">
                     <a href="/pages/login/login.jsp">退出</a>
-
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="#">Settings</a></li>
                         <li class="divider"></li>
@@ -123,35 +103,83 @@
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">资源列表</h1>
+            <h1 class="page-title">帖子列表</h1>
             <div class="btn-toolbar">
                 <div class="btn-group">
                 </div>
             </div>
-            <div class="well">
-                <form action="${pageContext.request.contextPath}/ResourceEditServlet" method="post">
-                    资源上传者: </br>
-                    &nbsp<input type="text" name="uploaderName" id="supplier" value="${resource.uploaderName}"><br>
-                    资源名称: <br>
-                    &nbsp<input type="text" name="name" id="supplier" value="${resource.name}"><br>
-                    资源说明: <br>
-                    &nbsp<input type="text" name="descn" id="supplier" value="${resource.descn}"><br>
-                    资源类型: <br>
-                    &nbsp<input type="text" name="type" id="supplier" value="${resource.type}"><br>
-                    &nbsp<input type="hidden" name="resourceId" id="supplier" value="${resource.resourceId}"><br>
-                    &nbsp<input type="submit" value="提交" id="sub"><br>
-                </form>
+            <div class="well" >
+                <table class="table" >
+                    <thead >
+                    <tr>
+                        <th>留言者</th>
+                        <th>时间</th>
+                        <th>内容</th>
+                        <th>是否为优</th>
+                        <th style="width: 102px;"></th>
+                    </tr>
+                    </thead>
+                    <!--循环开始-->
+                    <tbody>
+                    <c:forEach var="post" items="${pageInfo.list}">
+                        <tr>
+                            <td>${post.name}</td>
+                            <td>${post.postDate}</td>
+                            <td>${post.content}</td>
+                            <c:if test="${post.isExcellent eq 1}">
+                                <td>是</td>
+                            </c:if>
+                            <c:if test="${post.isExcellent eq 0}">
+                                <td>否</td>
+                            </c:if>
+                            <td>
+                                <!--商品信息更改和删除开始-->
+                                <a href="${pageContext.request.contextPath}/JumpPostUpdateServlet?postId=${post.postId}"><button style="height: 24px; width: 46px;font-size: 7px">修改</button></a>
+                                <a href="${pageContext.request.contextPath}/PostDeleteServlet?postId=${post.postId}" ><button style="height: 24px; width: 46px;font-size: 7px">删除</button></a>
+                                <!--商品信息更改和删除结束-->
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                    <!--循环结束-->
+                </table>
             </div>
 
-            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                 aria-hidden="true">
+            <div class="pagination">
+                <ul>
+                    <c:if test="${pageInfo.currentPage-1 gt 0}">
+                        <a href="${pageContext.request.contextPath}/PostsServlet?currentPage=${pageInfo.currentPage-1}">上一页</a>
+                    </c:if>
+                    <c:if test="${pageInfo.currentPage-1 le 0}">
+                        <span>上一页</span>
+                    </c:if>
+                    <c:forEach begin="${pageInfo.beginPage}" end="${pageInfo.endPage}" varStatus="status">
+                        <c:if test="${pageInfo.currentPage eq status.index}">
+                            <span>${status.index}</span>
+                        </c:if>
+                        <c:if test="${pageInfo.currentPage ne status.index}">
+                            <a href="${pageContext.request.contextPath}/PostsServlet?currentPage=${status.index}">${status.index}</a>
+                        </c:if>
+                    </c:forEach>
+                    <c:if test="${pageInfo.currentPage lt pageInfo.totalPages}">
+                        <a href="${pageContext.request.contextPath}/PostsServlet?currentPage=${pageInfo.currentPage+1}">下一页</a>
+                    </c:if>
+                    <c:if test="${pageInfo.currentPage ge pageInfo.totalPages}">
+                        <span>下一页</span>
+                    </c:if>
+                    <span>当前页：${pageInfo.currentPage}</span>
+                    <span>总页数：${pageInfo.totalPages}</span>
+                    <span>总记录数：${pageInfo.totalRecords}</span>
+                </ul>
+            </div>
+
+            <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
                     <h3 id="myModalLabel">Delete Confirmation</h3>
                 </div>
                 <div class="modal-body">
-                    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete
-                        the user?</p>
+                    <p class="error-text"><i class="icon-warning-sign modal-icon"></i>Are you sure you want to delete the user?</p>
                 </div>
                 <div class="modal-footer">
                     <button class="btn" data-dismiss="modal" aria-hidden="true">修改</button>
@@ -163,10 +191,12 @@
     </div>
 
 
+
     <footer>
         <p>&copy; 2015 <a href="#">Portnine</a></p>
     </footer>
 </div>
+
 
 
 <!-- Le javascript
@@ -174,6 +204,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 
 
+
+
 </body>
 </html>
-

@@ -126,7 +126,7 @@
 <jsp:include page="../../assert/headTwo.jsp"/>
 <div class="learning-resource-page">
     <div class="page-left">
-        <div id="resource-category" class="category">
+        <%--<div id="resource-category" class="category">
             <ul class="menu">
                 <li><a href="">学习资源1</a></li>
                 <li><a href="">学习资源2</a></li>
@@ -136,7 +136,7 @@
                 <li><a href="">学习资源6</a></li>
                 <li><a href="">学习资源7</a></li>
             </ul>
-        </div>
+        </div>--%>
     </div>
     <div class="page-main">
 
@@ -169,10 +169,10 @@
                             <a href="${pageContext.request.contextPath}/DownloadResourceServlet?currentPage=${status.index}">${status.index}</a>
                         </c:if>
                     </c:forEach>
-                    <c:if test="${pageInfo.currentPage+1 lt pageInfo.totalPages}">
+                    <c:if test="${pageInfo.currentPage lt pageInfo.totalPages}">
                         <a href="${pageContext.request.contextPath}/DownloadResourceServlet?currentPage=${pageInfo.currentPage+1}">下一页</a>
                     </c:if>
-                    <c:if test="${pageInfo.currentPage+1 ge pageInfo.totalPages}">
+                    <c:if test="${pageInfo.currentPage ge pageInfo.totalPages}">
                         <span>下一页</span>
                     </c:if>
                     <span>当前页：${pageInfo.currentPage}</span>

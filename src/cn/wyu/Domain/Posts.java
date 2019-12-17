@@ -6,19 +6,19 @@ public class Posts {
     private String name;
     private String content;
     private String postDate;
-    private String isExcellent;
-    private String isWorld;
+    private int isExcellent;
+    private int isWorld;
 
-    public Posts(int postId, String name, String content, String postDate, String isExcellent, String isWorld) {
+    public Posts() {
+    }
+
+    public Posts(int postId, String name, String content, String postDate, int isExcellent, int isWorld) {
         this.postId = postId;
         this.name = name;
         this.content = content;
         this.postDate = postDate;
         this.isExcellent = isExcellent;
         this.isWorld = isWorld;
-    }
-
-    public Posts() {
     }
 
     public int getPostId() {
@@ -53,19 +53,19 @@ public class Posts {
         this.postDate = postDate;
     }
 
-    public String getIsExcellent() {
+    public int getIsExcellent() {
         return isExcellent;
     }
 
-    public void setIsExcellent(String isExcellent) {
+    public void setIsExcellent(int isExcellent) {
         this.isExcellent = isExcellent;
     }
 
-    public String getIsWorld() {
+    public int getIsWorld() {
         return isWorld;
     }
 
-    public void setIsWorld(String isWorld) {
+    public void setIsWorld(int isWorld) {
         this.isWorld = isWorld;
     }
 }

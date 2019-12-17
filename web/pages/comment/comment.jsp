@@ -7,8 +7,11 @@
     <meta charset="UTF-8">
 	<title>留言</title>
 	<link rel="stylesheet" id="templatecss" type="text/css" href="../../css/ys.css">
+    <link rel="stylesheet" href="../../css/index.css" />
+    <link rel="stylesheet" href="../../css/index-middle.css" />
 </head>
 <body>
+<jsp:include page="../../assert/headTwo.jsp"/>
 <div class="img">
 	<form action="${pageContext.request.contextPath}/PostServlet" method="post" class="basic-grey">
 		<label>
@@ -25,8 +28,13 @@
     <br>
 	<c:forEach var="post" items="${pageInfo.list}">
 	<div class="main">
-		<p>用户名：${post.name}</p>
-		<p>${post.postDate}</p>
+		<span class="un" style="font-size: 20px;display: block;">${post.name}</span>
+		<span class="un" style="font-size: 16px">${post.postDate}</span>
+        <br>
+        <c:if test="${post.isExcellent eq 1}">
+            <span class="un" style="font-size: 20px">优</span>
+            <br>
+        </c:if>
 		<span>${post.content}</span>
         <form action="${pageContext.request.contextPath}/RecommentServlet" method="post">
             <div class="recomm">
@@ -40,7 +48,7 @@
         <c:forEach var="comment" items="${list}">
             <c:if test="${post.postId eq comment.com_postId}">
                 <div class="usertext">
-                    <a>${post.name}</a>
+                    <a>${comment.comName}</a>
                     <span>${comment.comContent}</span>
                 </div>
             </c:if>

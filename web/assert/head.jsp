@@ -14,8 +14,8 @@
         <li ><a href="/pages/login/login.jsp">上传资源</a></li>
         <li ><a href="/pages/login/login.jsp">资源库</a></li>
         <li ><a href="/pages/login/login.jsp">留言</a></li>
-        <li ><a href="/pages/login/login.jsp">分享</a></li>
-        <li ><a href="/pages/login/login.jsp">联系站长</a></li>
+       <%-- <li ><a href="/pages/login/login.jsp">分享</a></li>
+        <li ><a href="/pages/login/login.jsp">联系站长</a></li>--%>
     </ul>
     <div class="navbar-header"></div>
     <div>

@@ -28,8 +28,8 @@ public class PostsImple implements PostsDao {
                 preparedStatement.setString(1,posts.getName());
                 preparedStatement.setString(2,posts.getPostDate());
                 preparedStatement.setString(3,posts.getContent());
-                preparedStatement.setString(4,posts.getIsExcellent());
-                preparedStatement.setString(5,posts.getIsWorld());
+                preparedStatement.setInt(4,posts.getIsExcellent());
+                preparedStatement.setInt(5,posts.getIsWorld());
                 return preparedStatement;
             }
         });
@@ -39,7 +39,27 @@ public class PostsImple implements PostsDao {
 
     @Override
     public Posts queryById(int id) {
-        return null;
+        sql = "select * from posts where postId=?";
+        jdbcTemplate.query(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1, id);
+                return preparedStatement;
+            }
+        }, new RowCallbackHandler() {
+            @Override
+            public void processRow(ResultSet rs) throws SQLException {
+                post = new Posts();
+                post.setPostId(rs.getInt("postId"));
+                post.setName(rs.getString("name"));
+                post.setPostDate(rs.getString("postDate"));
+                post.setContent(rs.getString("content"));
+                post.setIsExcellent(rs.getInt("isExcellent"));
+                post.setIsWorld(rs.getInt("isWorld"));
+            }
+        });
+        return post;
     }
 
     @Override
@@ -48,8 +68,17 @@ public class PostsImple implements PostsDao {
     }
 
     @Override
-    public void deleteById(int id) {
-
+    public int deleteById(int id) {
+        sql = "delete from posts where postId=?";
+        int count = jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1,id);
+                return preparedStatement;
+            }
+        });
+        return count;
     }
 
     @Override
@@ -58,7 +87,7 @@ public class PostsImple implements PostsDao {
     }
 
     @Override
-    public PageInfo queryByCurPage(int currentPage) {
+    public PageInfo queryByCurPage(Integer currentPage) {
         List<Posts> list = new ArrayList<>();
         sql = "select * from posts limit ?,?";
         jdbcTemplate.query(new PreparedStatementCreator() {
@@ -77,8 +106,8 @@ public class PostsImple implements PostsDao {
                 post.setName(rs.getString("name"));
                 post.setPostDate(rs.getString("postDate"));
                 post.setContent(rs.getString("content"));
-                post.setIsExcellent(rs.getString("isExcellent"));
-                post.setIsWorld(rs.getString("isWorld"));
+                post.setIsExcellent(rs.getInt("isExcellent"));
+                post.setIsWorld(rs.getInt("isWorld"));
                 list.add(post);
             }
         });
@@ -97,5 +126,24 @@ public class PostsImple implements PostsDao {
         });
         PageInfo pageInfo = new PageInfo(list,currentPage,totalRecorders);
         return pageInfo;
+    }
+
+    @Override
+    public int updatePost(Posts post) {
+        sql = "update posts set name=?,postDate=?,content=?,isExcellent=?,isWorld=? where postId=?";
+        int count = jdbcTemplate.update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection conn) throws SQLException {
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setString(1,post.getName());
+                preparedStatement.setString(2,post.getPostDate());
+                preparedStatement.setString(3,post.getContent());
+                preparedStatement.setInt(4,post.getIsExcellent());
+                preparedStatement.setInt(5,post.getIsWorld());
+                preparedStatement.setInt(6,post.getPostId());
+                return preparedStatement;
+            }
+        });
+        return count;
     }
 }

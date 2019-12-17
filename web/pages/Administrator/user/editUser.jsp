@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>所有图书</title>
+    <title>后台管理</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -82,9 +82,7 @@
             <ul class="nav pull-right">
 
                 <li id="fat-menu" class="dropdown">
-                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
-                        管理员
-                    </a>
+                    <a href="/pages/login/login.jsp">退出</a>
 
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="#">Settings</a></li>
@@ -106,30 +104,28 @@
             <div class="sidebar-nav">
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu">用户管理</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
-                    <li><a href="index.jsp">主页</a></li>
-                    <li><a href="BooksListServlet">用户列表</a></li>
+
+                    <li ><a href="${pageContext.request.contextPath}/UsersListServlet">用户列表</a></li>
 
                 </ul>
                 <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu">资源管理</div>
                 <ul id="accounts-menu" class="nav nav-list collapse in">
-                    <li><a href="SysuserListSerclet">资源列表</a></li>
+                    <li ><a href="${pageContext.request.contextPath}/ResourceListServlet">资源列表</a></li>
 
                 </ul>
 
                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu">帖子管理</div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li><a href="#">帖子列表</a></li>
+                    <li ><a href="${pageContext.request.contextPath}/PostsServlet">帖子列表</a></li>
 
                 </ul>
 
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">图书列表</h1>
+            <h1 class="page-title">用户列表</h1>
             <div class="btn-toolbar">
-                <a href="add-books.jsp">
-                    <button class="btn btn-primary"> 添加图书</button>
-                </a>
+
                 <div class="btn-group">
                 </div>
             </div>

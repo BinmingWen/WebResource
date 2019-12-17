@@ -63,7 +63,9 @@
             <ul class="nav pull-right">
 
                 <li id="fat-menu" class="dropdown">
-                    <a href="/pages/login/login.jsp">退出</a>
+                    <a href="#" id="drop3" role="button" class="dropdown-toggle" data-toggle="dropdown">
+                        管理员
+                    </a>
 
                     <ul class="dropdown-menu">
                         <li><a tabindex="-1" href="#">Settings</a></li>
@@ -85,28 +87,28 @@
             <div class="sidebar-nav">
                 <div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu">用户管理</div>
                 <ul id="dashboard-menu" class="nav nav-list collapse in">
-
-                    <li ><a href="${pageContext.request.contextPath}/UsersListServlet">用户列表</a></li>
+                    <li ><a href="index.jsp">主页</a></li>
+                    <li ><a href="BooksListServlet">用户列表</a></li>
 
                 </ul>
                 <div class="nav-header" data-toggle="collapse" data-target="#accounts-menu">资源管理</div>
                 <ul id="accounts-menu" class="nav nav-list collapse in">
-                    <li ><a href="${pageContext.request.contextPath}/ResourceListServlet">资源列表</a></li>
+                    <li ><a href="SysuserListSerclet">资源列表</a></li>
 
                 </ul>
 
                 <div class="nav-header" data-toggle="collapse" data-target="#settings-menu">帖子管理</div>
                 <ul id="settings-menu" class="nav nav-list collapse in">
-                    <li ><a href="${pageContext.request.contextPath}/PostsServlet">帖子列表</a></li>
+                    <li ><a href="#">帖子列表</a></li>
 
                 </ul>
 
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">用户列表</h1>
+            <h1 class="page-title">图书列表</h1>
             <div class="btn-toolbar">
-
+                <a  href="add-books.jsp"><button class="btn btn-primary"> 添加图书</button></a>
                 <div class="btn-group">
                 </div>
             </div>
@@ -114,37 +116,28 @@
                 <table class="table" >
                     <thead >
                     <tr>
-                        <th>用户ID</th>
-                        <th>学号/教师编号</th>
-                        <th>姓名</th>
-                        <th>密码</th>
-                        <th>班级</th>
-                        <th>学生/老师</th>
+                        <th>资源上传者</th>
+                        <th>资源名称</th>
+                        <th>资源说明</th>
+                        <th>资源类型</th>
                         <th style="width: 102px;"></th>
                     </tr>
                     </thead>
                     <!--循环开始-->
                     <tbody>
-                    <c:forEach var="user" items="${pageInfo.list}">
-                    <tr>
-                        <td>${user.userId}</td>
-                        <td>${user.userNo}</td>
-                        <td>${user.userName}</td>
-                        <td>${user.password}</td>
-                        <td>${user.className}</td>
-                        <c:if test="${user.isStu eq 0}">
-                            <td>学生</td>
-                        </c:if>
-                        <c:if test="${user.isStu eq 1}">
-                            <td>老师</td>
-                        </c:if>
-                        <td>
-                            <!--商品信息更改和删除开始-->
-                            <a href="${pageContext.request.contextPath}/JumpUserEditServlet?id=${user.userId}"><button style="height: 24px; width: 46px;font-size: 7px">修改</button></a>
-                            <a href="${pageContext.request.contextPath}/UserDeleteServlet?userId=${user.userId}" ><button style="height: 24px; width: 46px;font-size: 7px">删除</button></a>
-                            <!--商品信息更改和删除结束-->
-                        </td>
-                    </tr>
+                    <c:forEach var="resource" items="${pageInfo.list}">
+                        <tr>
+                            <td>${resource.uploaderName}</td>
+                            <td>${resource.name}</td>
+                            <td>${resource.descn}</td>
+                            <td>${resource.type}</td>
+                            <td>
+                                <!--商品信息更改和删除开始-->
+                                <a href="${pageContext.request.contextPath}/JumpResourceEditServlet?resourceId=${resource.resourceId}"><button style="height: 24px; width: 46px;font-size: 7px">修改</button></a>
+                                <a href="${pageContext.request.contextPath}/ResourceDeleteServlet?resourceId=${resource.resourceId}" ><button style="height: 24px; width: 46px;font-size: 7px">删除</button></a>
+                                <!--商品信息更改和删除结束-->
+                            </td>
+                        </tr>
                     </c:forEach>
                     </tbody>
                     <!--循环结束-->
@@ -154,7 +147,7 @@
             <div class="pagination">
                 <ul>
                     <c:if test="${pageInfo.currentPage-1 gt 0}">
-                        <a href="${pageContext.request.contextPath}/UsersListServlet?currentPage=${pageInfo.currentPage-1}">上一页</a>
+                        <a href="${pageContext.request.contextPath}/ResourceListServlet?currentPage=${pageInfo.currentPage-1}">上一页</a>
                     </c:if>
                     <c:if test="${pageInfo.currentPage-1 le 0}">
                         <span>上一页</span>
@@ -164,11 +157,11 @@
                             <span>${status.index}</span>
                         </c:if>
                         <c:if test="${pageInfo.currentPage ne status.index}">
-                            <a href="${pageContext.request.contextPath}/UsersListServlet?currentPage=${status.index}">${status.index}</a>
+                            <a href="${pageContext.request.contextPath}/ResourceListServlet?currentPage=${status.index}">${status.index}</a>
                         </c:if>
                     </c:forEach>
                     <c:if test="${pageInfo.currentPage lt pageInfo.totalPages}">
-                        <a href="${pageContext.request.contextPath}/UsersListServlet?currentPage=${pageInfo.currentPage+1}">下一页</a>
+                        <a href="${pageContext.request.contextPath}/ResourceListServlet?currentPage=${pageInfo.currentPage+1}">下一页</a>
                     </c:if>
                     <c:if test="${pageInfo.currentPage ge pageInfo.totalPages}">
                         <span>下一页</span>
@@ -205,9 +198,9 @@
 
 
 
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
 
 
 

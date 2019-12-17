@@ -1,6 +1,7 @@
 package cn.wyu.Dao;
 
 import cn.wyu.Domain.Comment;
+import cn.wyu.bean.PageInfo;
 
 import java.util.List;
 
@@ -12,4 +13,6 @@ public interface CommentDao {
      */
     int insertCom(Comment comment);
     List<Comment> queryAll();
+
+    PageInfo queryByAll(Integer currentPage);
 }

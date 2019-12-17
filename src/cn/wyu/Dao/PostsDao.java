@@ -29,10 +29,12 @@ public interface PostsDao {
      * 根据id删除对应的行
      * @param id
      */
-    void deleteById(int id);
+    int deleteById(int id);
     /**
      * 修改数据
      */
     void modify(int id);
-    PageInfo queryByCurPage(int currentPage);
+    PageInfo queryByCurPage(Integer currentPage);
+    int updatePost(Posts post);
+
 }

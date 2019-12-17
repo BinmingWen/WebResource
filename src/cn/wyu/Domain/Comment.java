@@ -4,14 +4,24 @@ public class Comment {
     private int commentId;
     private String comContent;
     private int com_postId;
+    private String comName;
 
-    public Comment(int commentId, String comContent, int com_postId) {
+    public Comment(int commentId, String comContent, int com_postId, String comName) {
         this.commentId = commentId;
         this.comContent = comContent;
         this.com_postId = com_postId;
+        this.comName = comName;
     }
 
     public Comment() {
+    }
+
+    public String getComName() {
+        return comName;
+    }
+
+    public void setComName(String comName) {
+        this.comName = comName;
     }
 
     public int getCommentId() {

@@ -123,10 +123,13 @@ html,body{
 	font-size: 30px;
 	
 }
-.main span {
+.main span  {
 	display: block;
 	font-size: 30px;
 	
+}
+.main span un{
+	font-size: 16px;
 }
 .main  .button {
 	background: rgba(14, 156, 57, 0.664);

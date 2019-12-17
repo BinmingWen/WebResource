@@ -31,12 +31,10 @@ public class PostServlet extends HttpServlet {
         Posts post = new Posts();
         post.setContent(message);
         post.setName(user.getUserName());
-        post.setIsExcellent("否");
-        post.setIsWorld("否");
+        post.setIsExcellent(0);
+        post.setIsWorld(0);
         post.setPostDate(dateTime);
         PostService postService = new PostServiceImple();
-        System.out.println(dateTime);
-        System.out.println(message);
         if(postService.isInsert(post)){
 
             request.getRequestDispatcher("/PostListServlet").forward(request,response);

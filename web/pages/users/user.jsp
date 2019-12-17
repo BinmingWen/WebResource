@@ -54,7 +54,7 @@
             <form >
                 <ul>
                     <li class="user-list">姓名：${user.userName}</li>
-                    <li class="user-list">学号：${user.userNo}</li>
+                    <li class="user-list">学号/教师编号：${user.userNo}</li>
                     <li class="user-list">班级：${user.className}</li>
                 </ul>
                 <div class="rewrite-btn"><a href="${pageContext.request.contextPath}/JumpUpdateServlet">修改个人资料</a></div>

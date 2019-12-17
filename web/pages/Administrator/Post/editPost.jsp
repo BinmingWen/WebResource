@@ -11,7 +11,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>后台管理</title>
+    <title>所有图书</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -123,22 +123,28 @@
             </div>
         </div>
         <div class="span9">
-            <h1 class="page-title">资源列表</h1>
+            <h1 class="page-title">帖子列表</h1>
             <div class="btn-toolbar">
                 <div class="btn-group">
                 </div>
             </div>
             <div class="well">
-                <form action="${pageContext.request.contextPath}/ResourceEditServlet" method="post">
-                    资源上传者: </br>
-                    &nbsp<input type="text" name="uploaderName" id="supplier" value="${resource.uploaderName}"><br>
-                    资源名称: <br>
-                    &nbsp<input type="text" name="name" id="supplier" value="${resource.name}"><br>
-                    资源说明: <br>
-                    &nbsp<input type="text" name="descn" id="supplier" value="${resource.descn}"><br>
-                    资源类型: <br>
-                    &nbsp<input type="text" name="type" id="supplier" value="${resource.type}"><br>
-                    &nbsp<input type="hidden" name="resourceId" id="supplier" value="${resource.resourceId}"><br>
+                <form action="${pageContext.request.contextPath}/PostEditServlet" method="post">
+                    留言者: </br>
+                    &nbsp<input type="text" name="name" id="supplier" value="${posts.name}"><br>
+                    时间: <br>
+                    &nbsp<input type="text" name="postDate" id="supplier" value="${posts.postDate}"><br>
+                    内容: <br>
+                    &nbsp<input type="text" name="content" id="supplier" value="${posts.content}"><br>
+                    <c:if test="${posts.isExcellent eq 1}">
+                        是否为优: <br>
+                        &nbsp<input type="text" name="isExcellent" id="supplier" value="是"><br>
+                    </c:if>
+                    <c:if test="${posts.isExcellent eq 0}">
+                        是否为优: <br>
+                        &nbsp<input type="text" name="isExcellent" id="supplier" value="否"><br>
+                    </c:if>
+                    &nbsp<input type="hidden" name="postId" id="supplier" value="${posts.postId}"><br>
                     &nbsp<input type="submit" value="提交" id="sub"><br>
                 </form>
             </div>
@@ -176,4 +182,3 @@
 
 </body>
 </html>
-

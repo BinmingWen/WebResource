@@ -27,15 +27,6 @@ import java.util.UUID;
 public class UploadServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        /*request.setCharacterEncoding("utf-8");
-        String resourceName = request.getParameter("resourceName");
-        String type = request.getParameter("type");
-        String describe = request.getParameter("describe");
-        System.out.println(resourceName);
-        HttpSession session = request.getSession();
-        Users user = (Users)session.getAttribute("user");
-        Resource resource = new Resource(user.getUserId(),resourceName,describe,type);
-        ResourceService reService = new ResourceServiceImple();*/
         String resourceName = null;
         String type = null;
         String describe = null;
@@ -84,8 +75,8 @@ public class UploadServlet extends HttpServlet {
                 //不是文件上传，则退出程序。
                 return;
             }
-            //设置上传单个文件的最大值，目前设置为1MB
-            upload.setFileSizeMax(1024 * 1024);
+            //设置上传单个文件的最大值，目前设置为10MB
+            upload.setFileSizeMax(1024 * 1024*10);
             //设置上传文件总量的最大值，最大=同时上传的多个文件的最大值的和，设置为10M
             upload.setSizeMax(1024 * 1024 * 10);
             //4.
