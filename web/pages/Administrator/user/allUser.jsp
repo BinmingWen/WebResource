@@ -114,12 +114,12 @@
                 <table class="table" >
                     <thead >
                     <tr>
-                        <th>用户ID</th>
                         <th>学号/教师编号</th>
                         <th>姓名</th>
                         <th>密码</th>
                         <th>班级</th>
                         <th>学生/老师</th>
+                        <th>用户类型</th>
                         <th style="width: 102px;"></th>
                     </tr>
                     </thead>
@@ -127,7 +127,6 @@
                     <tbody>
                     <c:forEach var="user" items="${pageInfo.list}">
                     <tr>
-                        <td>${user.userId}</td>
                         <td>${user.userNo}</td>
                         <td>${user.userName}</td>
                         <td>${user.password}</td>
@@ -137,6 +136,12 @@
                         </c:if>
                         <c:if test="${user.isStu eq 1}">
                             <td>老师</td>
+                        </c:if>
+                        <c:if test="${user.isAdmin eq 1}">
+                            <td>管理员用户</td>
+                        </c:if>
+                        <c:if test="${user.isAdmin ne 1}">
+                            <td>普通用户</td>
                         </c:if>
                         <td>
                             <!--商品信息更改和删除开始-->

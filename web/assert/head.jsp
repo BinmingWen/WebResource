@@ -11,9 +11,9 @@
     <div class="access-statistics"></div>
     <ul id="menu">
         <li ><a href="/pages/index.jsp">首页</a></li>
-        <li ><a href="/pages/login/login.jsp">上传资源</a></li>
-        <li ><a href="/pages/login/login.jsp">资源库</a></li>
-        <li ><a href="/pages/login/login.jsp">留言</a></li>
+        <li ><a href="${pageContext.request.contextPath}/CheckServlet">上传资源</a></li>
+        <li ><a href="${pageContext.request.contextPath}/FirstDownloadResourceServlet">资源库</a></li>
+        <li ><a href="${pageContext.request.contextPath}/CheckServlet">留言</a></li>
        <%-- <li ><a href="/pages/login/login.jsp">分享</a></li>
         <li ><a href="/pages/login/login.jsp">联系站长</a></li>--%>
     </ul>

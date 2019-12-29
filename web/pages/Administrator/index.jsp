@@ -71,7 +71,7 @@
     </div>
 </div>
 <div class="row-fluid" style="text-align: center">
-    <h1>欢迎进入邑大论坛后台管理系统</h1>
+    <h1>欢迎进入学习资源论坛后台管理系统</h1>
 
 
 </div>
